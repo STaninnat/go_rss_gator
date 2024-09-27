@@ -45,7 +45,7 @@ func getConfigFilePath() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	fullPath := filepath.Join(home, "/workspace/github.com/STaninnat/rss_gator", configFileName)
+	fullPath := filepath.Join(home, configFileName)
 
 	return fullPath, nil
 }
