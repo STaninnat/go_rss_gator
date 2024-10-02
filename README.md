@@ -1,4 +1,4 @@
-# Blog Aggregator CLI
+# RSS gator CLI
 
 Golang RSS feed (CLI tool)
 
