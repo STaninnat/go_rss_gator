@@ -45,8 +45,7 @@ func getConfigFilePath() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	pathToRepo := "" //change path here
-	fullPath := filepath.Join(home, pathToRepo, configFileName)
+	fullPath := filepath.Join(home, configFileName)
 
 	return fullPath, nil
 }

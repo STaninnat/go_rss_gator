@@ -1,8 +1,8 @@
-# RSS gator CLI
+# Gator
 
 Golang RSS feed (CLI tool)
 
-This project is a Go application that interacts with a PostgreSQL database.
+A multi-player command line tool for aggregating RSS feeds and viewing the posts.
 
 ## Features
 
@@ -11,23 +11,74 @@ This project is a Go application that interacts with a PostgreSQL database.
 - Follow and unfollow RSS feeds that other users have added
 - View summaries of the aggregated posts in the terminal, with a link to the full post
 
-## Requirements
+## Installation and Requirements
+
+- Clone the repository.
 
 Before running the program, ensure you have the following installed:
 
-- **[Go](https://golang.org/dl/)** (version 1.19 or above): The primary language for building the project.
-- **[PostgreSQL](https://www.postgresql.org/download/)** (version 12 or above): Relational database used to store aggregated blog data.
+- **[Go](https://golang.org/dl/)** (Make sure you have the latest): The primary language for building the project.
+- **[PostgreSQL](https://www.postgresql.org/download/)** (Make sure you have the latest): Relational database used to store aggregated blog data.
 - **SQLc**: Automatically generates Go code from SQL queries.
 - **Goose**: Manages database migrations.
 - **pgAdmin**: Database management tool to interact with PostgreSQL.
 
-## Installation
+## Config
 
-1. Clone the repository.
-2. Set up PostgreSQL and manually create a config file in your home directory, `~/.gatorconfig.json`, with the following content:`{"db_url": "protocol://username:password@host:port/database?sslmode=disable"}`<br>
-    or change path of `.gatorconfig.json` in `internal/config/config.go/getConfigFilePath` to this repository<br>
-    and then change content: `{"db_url": "protocol://username:password@host:port/database?sslmode=disable"}`.
-3. Run the necessary database migrations with Goose.
-4. Run the application by using the following command: `./gator <command>`.
-    - But first you'll need to run `go build -o gator` to generate the binary before you can run `./gator <command>`.
-    - You can use `./gator help` to see all commands.
+1. Run `chmod +x install.sh` and then `./install.sh`
+2. Set up PostgreSQL and manually create a `.gatorconfig.json` file in your home directory with the following structure:
+
+```json
+{
+  "db_url": "postgres://username:@localhost:5432/database?sslmode=disable"
+}
+```
+3. You'll need to run `go build -o gator` to generate the binary before you can run `gator <command>`.
+4. Run the necessary database migrations with Goose.
+
+## Usage
+
+Help command to see all commands:
+```bash
+gator help
+```
+
+Create a new user:
+
+```bash
+gator register <name>
+```
+
+Add a feed:
+
+```bash
+gator addfeed <url>
+```
+
+Start the aggregator:
+
+```bash
+gator agg 30s
+```
+
+View the posts:
+
+```bash
+gator browse [limit]
+```
+
+There are a few other commands you'll need as well:
+
+- `gator login <name>` - Log in as a user that already exists
+- `gator users` - List all users
+- `gator feeds` - List all feeds
+- `gator follow <url>` - Follow a feed that already exists in the database
+- `gator unfollow <url>` - Unfollow a feed that already exists in the database
+
+## Running the Gator Command
+
+If you encounter an issue where the `gator` command is not recognized, you can run the binary directly using the following command:
+
+```bash
+./gator <command>
+```
