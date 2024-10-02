@@ -1,4 +1,3 @@
 {
-    "db_url": "postgres://postgres:postgres@localhost:5432/rss_gator?sslmode=disable",
-    "current_user_name": ""
+    "db_url": "protocol://username:password@host:port/database?sslmode=disable"
 }

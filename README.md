@@ -24,10 +24,11 @@ Before running the program, ensure you have the following installed:
 ## Installation
 
 1. Clone the repository.
-2. Set up PostgreSQL and Manually create a config file in your home directory, `~/.gatorconfig.json`, with the following content: 
-`{"db_url": "postgres://example"}` or change path of `.gatorconfig.json` in `internal/config/config.go/getConfigFilePath`.
+2. Set up PostgreSQL and manually create a config file in your home directory, `~/.gatorconfig.json`, with the following content:<br>
+    `{"db_url": "protocol://username:password@host:port/database?sslmode=disable"}` <br>
+    or change path of `.gatorconfig.json` in `internal/config/config.go/getConfigFilePath` and then change content: <br>
+    `{"db_url": "protocol://username:password@host:port/database?sslmode=disable"}`.
 3. Run the necessary database migrations with Goose.
 4. Run the application by using the following command: `./gator <command>`.
-    - If you're using a different system, you'll need to run `go build -o gator` to generate the binary before you can run `./gator <command>`.
+    - But first you'll need to run `go build -o gator` to generate the binary before you can run `./gator <command>`.
     - You can use `./gator help` to see all commands.
-
