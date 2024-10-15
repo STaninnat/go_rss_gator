@@ -33,7 +33,7 @@ Before running the program, ensure you have the following installed:
   "db_url": "postgres://<username>:<password>@<host>:<port>/<dbname>?<options>"
 }
 ```
-  *example:  "db_url": "postgres://username:@localhost:5432/database?sslmode=disable"*
+  *example:  "db_url": "postgres://username:@localhost:5432/database?sslmode=disable"*<br>
 3. You'll need to run `go build -o gator` to generate the binary before you can run `gator <command>`.
 4. Run the necessary database migrations with Goose.
 
